@@ -1,0 +1,1 @@
+﻿print("Environnement OK ✅")
