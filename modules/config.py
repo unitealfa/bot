@@ -1,28 +1,43 @@
 """
     author: feezyhendrix
 
-    Configuration files
-    NOTE: check Assets/proxies.txt to use your custom proxies.
- """
+    Configuration file
+    NOTE: leave use_custom_proxy=False if you don't use proxies.
+"""
 import os
-
 import logging
 
 logging.basicConfig(level=logging.INFO)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ASSET_DIR = os.path.join(BASE_DIR, 'Assets' )
+ASSET_DIR = os.path.join(BASE_DIR, "Assets")
+
+# Chemin simplifié pour le ChromeDriver (déplacé à la racine 'drivers')
+# Si tu gardes l’ancien chemin long, remets-le ici.
+CHROMEDRIVER_PATH = r"C:\Users\moura\OneDrive\Bureau\Insta-mass-account-creator\drivers\chromedriver.exe"
 
 Config = {
-    "bot_type" : 1, #change to 2 to use python requests
-    "chromedriver_path": r"path/to/chromedriver",  # if windows 'chromedriver.exe'
-    "use_custom_proxy" : False, #default is False change to True to use a file containing multiple proxies of yours.
-    "use_local_ip_address" : True, #default is False chnage to True to user your computers ip directly.
-    "amount_of_account": 1, #amount of account you want to create make sure it doesnt exceed 50 for better performance
-    "amount_per_proxy": 1, #this would be amont of account used if you have a you are using multiple proxies
-    "proxy_file_path" : ASSET_DIR + "/proxies.txt",
+    # 1 = Selenium, 2 = requests (selon le projet)
+    "bot_type": 1,
+
+    # Chemin vers chromedriver.exe (utilisé explicitement par le code Selenium)
+    "chromedriver_path": r"C:\Users\moura\OneDrive\Bureau\Insta-mass-account-creator\drivers\chromedriver.exe",
+
+    # Proxies: désactivés
+    "use_custom_proxy": False,
+    "use_local_ip_address": True,
+
+    # Fichier de proxies (non utilisé si use_custom_proxy=False)
+    "proxy_file_path": os.path.join(ASSET_DIR, "proxies.txt"),
+
+    # Paramètres divers du projet (garde les valeurs d’origine si besoin)
+    "amount_of_account": 1,
+    "amount_per_proxy": 1,
+
     "email_domain": "gmail.com",
     "country": "it",
+
+    # Remplacer par tes identifiants si le projet les utilise
     "activation_email_addr": "xxxxxxxxxxxxxxxx",
     "activation_email_pass": "xxxxxxxxxxxxxxxx",
     "activation_email_serv": "xxxxxxxxxxxxxxxx",
